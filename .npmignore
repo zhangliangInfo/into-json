@@ -1,6 +1,6 @@
 # 发布时忽略以下内容
-config
-example
-src
+/config
+/example
+/src
 .babelrc
-pack-lock.json
+package-lock.json
