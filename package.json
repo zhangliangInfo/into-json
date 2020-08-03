@@ -1,0 +1,46 @@
+{
+  "name": "into-json",
+  "version": "1.0.0",
+  "description": "converting the input data to JSON format follows JSON-Schema.",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=deveploment webpack-dev-server --config config/webpack.dev.config.js",
+    "build": "npm run build-pro && npm run build-umd",
+    "build-pro": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js",
+    "build-umd": "cross-env NODE_ENV=umd webpack --config config/webpack.prod.config.js",
+    "pub": "npm run build && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangliangInfo/into-json.git"
+  },
+  "keywords": [
+    "intoJSON",
+    "JSON-Schema"
+  ],
+  "author": "zhangliang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangliangInfo/into-json/issues"
+  },
+  "homepage": "https://github.com/zhangliangInfo/into-json#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.1.0",
+    "jsonschema": "^1.2.6",
+    "mini-css-extract-plugin": "^0.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.0.9"
+  },
+  "dependencies": {}
+}
