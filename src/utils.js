@@ -8,12 +8,13 @@ const getDataType = module.exports.getDataType = function getDataType(value) {
 /**
   转换数据类型
 */
-const transferData = module.exports.transferData = function transferData(type) {
-  if(type === 'object') {
-    return {}
-  } else if(type === 'array') {
-    return []
-  }
+const convertData = module.exports.convertData = function convertData(type) {
+  return type === 'object' ? {} :
+         type === 'array' ? [] :
+         type === 'string' ? '' :
+         type === 'number' ? null :
+         type === 'null' ? null :
+         type === 'undefined' ? undefined : null
 }
 
 /**
@@ -23,16 +24,16 @@ const initializeArray = module.exports.initializeArray = function initializeArra
   const { items } = schema
   if(getDataType(items) === 'object') {
     if(items.type) {
-      return[transferData(items.type)]
+      return [convertData(items.type)]
     } else {
       const obj = {}
       for(let k in items) {
-        obj[k] = transferData(k.type)
+        obj[k] = convertData(items[k].type)
       }
       return [obj]
     }
   } else if(getDataType(items) === 'array') {
-    return items.map(ele => transferData(ele.type))
+    return items.map(ele => convertData(ele.type))
   }
 }
 
@@ -42,14 +43,6 @@ const initializeArray = module.exports.initializeArray = function initializeArra
 module.exports.recordErrors = function recordErrors(isRecord, schema, errors) {
   console.log('The errors is ' + errors + '')
   if(!isRecord) return
-  // axios.post('http://10.170.177.213:3001/api/postErrorsMsg', {
-  //   interface: '/api/test',
-  //   user: 'testuser',
-  //   jsonschema: schema,
-  //   errors
-  // }, {
-  //   withCredentials: true
-  // })
   fetch('http://10.170.177.213:3001/api/postErrorsMsg', {
     body: JSON.stringify({
       interface: '/api/test',
