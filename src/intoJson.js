@@ -41,10 +41,10 @@ function restoreStruct(instance, schema) {
   return instance;
 }
 
-function IntoJSON(instance, schema) {
+function IntoJSON(instance, schema, isRecord) {
   const valid = v.validate(instance, schema);
   if(valid.errors.length > 0) {
-    recordErrors(true, schema, valid.errors);
+    recordErrors(isRecord, schema, valid.errors);
   }
   return restoreStruct(instance, schema);
 }

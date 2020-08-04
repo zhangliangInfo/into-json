@@ -9,10 +9,14 @@ class ReactDemo extends React.Component {
 			type: 'object',
 			properties: {
 				name: { type: 'string' },
-				value: { type: 'number' }
+				value: { type: 'number' },
+				children: {
+					type: 'array',
+				}
 			}
 		}
-		IntoJSON(data, schema)
+		const res = IntoJSON(data, schema, false)
+		console.log(res)
 	}
 
   render() {

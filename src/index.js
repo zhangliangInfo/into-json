@@ -1,2 +1,2 @@
-const InfoJSON = require('./intoJson')
-export default InfoJSON
+const IntoJSON = require('./intoJson')
+export default IntoJSON

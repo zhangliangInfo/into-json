@@ -7,7 +7,7 @@ let output = {}
 if(NODE_ENV === 'production') {
   output = {
     path: path.join(__dirname, '../lib/'),
-    filename: '[name].js',
+    filename: 'index.js',
   }
 } else if(NODE_ENV === 'umd') {
   output = {
@@ -20,10 +20,8 @@ if(NODE_ENV === 'production') {
 }
 
 const prodConfig = {
-  mode: 'production',
-  entry: {
-    index: path.join(__dirname, '../src/index.js')
-  },
+  mode: 'development',
+  entry: path.join(__dirname, '../src/index.js'),
   output,
   module: {
     rules: [
