@@ -100,7 +100,7 @@ class ReactDemo extends React.Component {
 			required: ['title', 'name', 'value']
 		}
 		const res = IntoJSON(data, schema3, true, true, function(errors) {
-			fetch('http://10.170.177.213:3001/api/postErrorsMsg', {
+			fetch('http://test.jd.com:3001/api/postErrorsMsg', {
 		    body: JSON.stringify({
 		      interface: '/api/test',
 		      user: 'testuser',
@@ -108,7 +108,12 @@ class ReactDemo extends React.Component {
 		      errors
 		    }),
 		    credentials: 'include',
+		    headers: {
+		    	'Content-Type': 'application/json'
+		    },
 		    method: 'post'
+		  }).then( res => {
+		  	console.log(res)
 		  })
 		})
 		console.log(res)
