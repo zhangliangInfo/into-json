@@ -13,6 +13,8 @@ const convertData = module.exports.convertData = function convertData(type) {
          type === 'array' ? [] :
          type === 'string' ? '' :
          type === 'number' ? null :
+         type === 'integer' ? null :
+         type === 'boolean' ? null :
          type === 'null' ? null :
          type === 'undefined' ? undefined : null
 }
@@ -40,17 +42,8 @@ const initializeArray = module.exports.initializeArray = function initializeArra
 /**
   记录错误信息
 */
-module.exports.recordErrors = function recordErrors(isRecord, schema, errors) {
-  console.log('The errors is ' + errors + '')
+module.exports.recordErrors = function recordErrors(schema, errors, isConsole, isRecord, callback) {
+  isConsole && console.log('The errors is ' + errors + '')
   if(!isRecord) return
-  fetch('http://10.170.177.213:3001/api/postErrorsMsg', {
-    body: JSON.stringify({
-      interface: '/api/test',
-      user: 'testuser',
-      jsonschema: schema,
-      errors
-    }),
-    credentials: 'include',
-    method: 'post'
-  })
+  typeof callback === 'function' && callback(errors)
 }

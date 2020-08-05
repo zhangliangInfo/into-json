@@ -1,1 +1,34 @@
-module.exports = ['$id', '$schema', '$ref', 'title', 'description', 'required']
+module.exports = [
+	'$id',
+	'$schema',
+	'$ref',
+	'title',
+	'description',
+	'required'
+]
+
+// 'default',
+// 'example',
+// 'uniqueItems',
+// 'minItems',
+// 'maxItems',
+// 'items',
+// 'additionalItems',
+// 'exclusiveMinimum',
+// 'exclusiveMaximum',
+// 'multipleOf',
+// 'pattern',
+// 'minLength',
+// 'maxLength',
+// 'properties',
+// 'patternProperties',
+// 'dependencies',
+// 'additionaProperties',
+// 'minProperties',
+// 'maxProperties',
+// 'allOf',
+// 'anyOf',
+// 'oneOf',
+// 'not',
+// 'definations',
+// 'enum'
