@@ -12,7 +12,7 @@ npm i into-json -S
 UseAge
 ---
 #### Simple
-```
+```js
 import IntoJSON from 'into-json'
 const data = null
 const schema = {
@@ -35,10 +35,13 @@ console.log(value)
   children: []
 }
 ```
-### Complex example, can listen for error
-```
+#### Complex example, can listen for error
+```javascript
 const saveErrors = function(errors) {
-  <!-- record the errors to server -->
+  // Do something
+  // record the errors to server
+  console.log(errors)
+  // The errors is instance is not of a type(s) object
 }
 const value = IntoJSON(data, schema, true, true, saveErrors)
 ```
