@@ -12,7 +12,7 @@ npm i into-json -S
 UseAge
 ---
 #### Simple
-```
+```js
 import IntoJSON from 'into-json'
 const data = null
 const schema = {
@@ -35,20 +35,37 @@ console.log(value)
   children: []
 }
 ```
-### Complex example, can listen for error
-```
+#### Complex example, can listen for error
+```javascript
 const saveErrors = function(errors) {
-  <!-- record the errors to server -->
+  // Do something
+  // record the errors to server
+  console.log(errors)
+  // The errors is instance is not of a type(s) object
 }
 const value = IntoJSON(data, schema, true, true, saveErrors)
 ```
 
 Options
 ----
+#### example
+```js
+import IntoJSON from 'into-json'
+let data = null
+const schema = {
+	type: 'array'
+}
+const ck = (errors) => {
+	console.log(errors)
+}
+data = IntoJSON(data, schema, false, true, ck) 
+// Output
+[]
+```
 | argument | description | type | default |
 | --- | --- | --- | --- |
 | data | the data want to convert. | any | - |
-| schema | validator with the jsonschema. | JSON | - |
-| isConsole | the data want to convert. | any | true |
-| isRecord | the data want to convert. | any | false |
-| callback | the data want to convert. | any | - |
+| schema | validator with the jsonschema. | json | - |
+| isConsole | the data want to convert. | boolean | true |
+| isRecord | the data want to convert. | boolean | false |
+| callback | the data want to convert. | function | - |
