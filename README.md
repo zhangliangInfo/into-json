@@ -48,10 +48,24 @@ const value = IntoJSON(data, schema, true, true, saveErrors)
 
 Options
 ----
+#### example
+```js
+import IntoJSON from 'into-json'
+let data = null
+const schema = {
+	type: 'array'
+}
+const ck = (errors) => {
+	console.log(errors)
+}
+data = IntoJSON(data, schema, false, true, ck) 
+// Output
+[]
+```
 | argument | description | type | default |
 | --- | --- | --- | --- |
 | data | the data want to convert. | any | - |
-| schema | validator with the jsonschema. | JSON | - |
-| isConsole | the data want to convert. | any | true |
-| isRecord | the data want to convert. | any | false |
-| callback | the data want to convert. | any | - |
+| schema | validator with the jsonschema. | json | - |
+| isConsole | the data want to convert. | boolean | true |
+| isRecord | the data want to convert. | boolean | false |
+| callback | the data want to convert. | function | - |
