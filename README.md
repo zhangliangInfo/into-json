@@ -1,7 +1,54 @@
-### into-json
-### UseAge
-用法
+IntoJSON
+========
+Purpose
+---
+Convert to JSON based on jsonschema.<br>
+the jsonschema based on draft4.
 
+Install
+---
+npm i into-json -S
 
-### 使用方法：只对引用数据类型进行转换（Object/Array）
-1.支持默认值
+UseAge
+---
+#### Simple
+```
+import IntoJSON from 'into-json'
+const data = null
+const schema = {
+  type: 'object',
+  properties: {
+    name: { type: 'string' },
+    value: { type: 'number' },
+    children: {
+      type: 'array'
+    }
+  }
+}
+const value = IntoJSON(data, schema)
+
+console.log(value)
+// Output
+{
+  name: '',
+  value: null,
+  children: []
+}
+```
+### Complex example, can listen for error
+```
+const saveErrors = function(errors) {
+  <!-- record the errors to server -->
+}
+const value = IntoJSON(data, schema, true, true, saveErrors)
+```
+
+Options
+----
+| argument | description | type | default |
+| --- | --- | --- | --- |
+| data | the data want to convert. | any | - |
+| schema | validator with the jsonschema. | JSON | - |
+| isConsole | the data want to convert. | any | true |
+| isRecord | the data want to convert. | any | false |
+| callback | the data want to convert. | any | - |
