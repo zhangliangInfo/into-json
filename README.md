@@ -9,7 +9,7 @@ Install
 ---
 npm i into-json -S
 
-UseAge
+Useage
 ---
 #### Simple
 ```js
@@ -46,7 +46,7 @@ const saveErrors = function(errors) {
 const value = IntoJSON(data, schema, true, true, saveErrors)
 ```
 
-Options
+Option
 ----
 #### example
 ```js
