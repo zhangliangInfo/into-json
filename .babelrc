@@ -1,10 +1,8 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
-  "plugins": [
-  	["@babel/plugin-transform-modules-umd", {
-      "globals": {
-        "es6-promise": "Promise"
-      }
-    }]
-   ]
+  "presets": [
+  	"@babel/preset-env",
+  	"@babel/preset-react",
+  	"@babel/preset-typescript"
+  ],
+  "comments": false
 }

@@ -1,13 +1,18 @@
 const path = require('path')
 const baseConfig = require('./webpack.base')
+const { merge } = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const NODE_ENV = process.env.NODE_ENV
 
 let output = {}
+let umdPlugin = {}
+
 if(NODE_ENV === 'production') {
   output = {
     path: path.join(__dirname, '../lib/'),
     filename: 'index.js',
+    libraryTarget: 'commonjs'
   }
 } else if(NODE_ENV === 'umd') {
   output = {
@@ -16,6 +21,23 @@ if(NODE_ENV === 'production') {
     library: 'IntoJSON',
     libraryTarget: 'umd',
     libraryExport: 'default'
+  }
+
+  umdPlugin = {
+    test: /\.((js|ts)x?)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        plugins: [
+          ['@babel/plugin-transform-modules-umd', {
+            "globals": {
+              "es6-promise": "Promise"
+            }
+          }]
+        ]
+      }
+    }
   }
 }
 
@@ -30,6 +52,9 @@ const prodConfig = {
         exclude: /\.min\.css/,
         loader: [MiniCssExtractPlugin.loader, 'css-loader?modules']
       },
+      {
+        ...umdPlugin
+      }
     ]
   },
   plugins: [
@@ -37,20 +62,20 @@ const prodConfig = {
       filename: 'main.min.css'
     })
   ],
-  externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react',
-    },
-    'react-dom': {
-      root: 'ReactDom',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom',
-    }
-  }
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }),
+    ],
+  },
 }
 
-module.exports = Object.assign({}, prodConfig, {module: baseConfig.module})
+const options = merge(prodConfig, {module: baseConfig.module, resolve: baseConfig.resolve})
+
+module.exports = options

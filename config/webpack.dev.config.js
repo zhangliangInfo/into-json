@@ -1,9 +1,10 @@
 const path = require('path')
 const baseConfig = require('./webpack.base')
+const { merge } = require('webpack-merge')
 
 const devConfig = {
   mode: 'development',
-  entry: path.join(__dirname, '../example/src/app.js'),
+  entry: path.join(__dirname, '../example/src/index.tsx'),
   output: {
     path: path.join(__dirname, '../example/src/'),
     filename: 'bundle.js'
@@ -29,5 +30,5 @@ const devConfig = {
     open: true
   }
 }
-
-module.exports = Object.assign({}, devConfig, {module: baseConfig.module})
+const options = merge(devConfig, {module: baseConfig.module, resolve: baseConfig.resolve})
+module.exports = options
