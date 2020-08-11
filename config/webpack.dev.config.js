@@ -9,6 +9,7 @@ const devConfig = {
     path: path.join(__dirname, '../example/src/'),
     filename: 'bundle.js'
   },
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {

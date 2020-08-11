@@ -2,6 +2,8 @@
 /config
 /example
 /src
+/ts
 .babelrc
+tsconfig.json
 package-lock.json
 dev.md

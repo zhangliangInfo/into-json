@@ -43,7 +43,7 @@ if(NODE_ENV === 'production') {
 
 const prodConfig = {
   mode: 'development',
-  entry: path.join(__dirname, '../src/index.js'),
+  entry: path.join(__dirname, '../src/index.tsx'),
   output,
   module: {
     rules: [

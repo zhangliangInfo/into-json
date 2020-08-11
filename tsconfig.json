@@ -1,12 +1,14 @@
 {
 	"compilerOptions": {
-		"outDir": "./dist/",
-		"sourceMap": true,
-		"noImplicitAny": true,
+		"outDir": "./lib",
+		"sourceMap": false,
+		"noImplicitAny": false,
 		"module": "commonjs",
 		"target": "es5",
-		"jsx": "preserve",
+		"jsx": "react",
 		"allowJs": true,
+		"removeComments": true,
 		"esModuleInterop": true
-	}
+	},
+	"include": ["ts/**/*"],
 }
