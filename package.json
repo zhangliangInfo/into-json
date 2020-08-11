@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=deveploment webpack-dev-server --config config/webpack.dev.config.js",
-    "build": "npm run build-pro && npm run build-umd",
+    "build": "npm run build-pro-ts && npm run build-umd",
     "build-pro": "npx babel ts --out-dir lib",
     "build-pro-ts": "tsc",
     "build-umd": "cross-env NODE_ENV=umd webpack --config config/webpack.prod.config.js",
