@@ -1,4 +1,4 @@
-module.exports = [
+const _constant: Array<string> = [
 	'$id',
 	'$schema',
 	'$ref',
@@ -7,3 +7,5 @@ module.exports = [
 	'required',
 	'testEqual'
 ]
+
+module.exports = _constant

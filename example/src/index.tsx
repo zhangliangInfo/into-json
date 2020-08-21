@@ -2,7 +2,22 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import IntoJSON from '../../src/index'
 
-class App extends React.Component {
+interface P {
+
+}
+
+interface S {
+	res: string;
+}
+
+class App extends React.Component<P, S> {
+	constructor(props: P) {
+		super(props);
+		this.state = {
+			res: ''
+		}
+	}
+
 	componentDidMount() {
     const data = null;
 		const schema = {
@@ -87,10 +102,13 @@ class App extends React.Component {
       console.log(errors)
     })
     console.log(res)
+    this.setState({
+    	res: JSON.stringify(res)
+    })
 	}
 
 	render() {
-		return <div>TS Version.</div>
+		return <div>{this.state.res}</div>
 	}
 }
 
